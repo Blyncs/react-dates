@@ -83,6 +83,8 @@ var propTypes = forbidExtraProps(_objectAssign({}, withStylesPropTypes, {
   selectedEndStyles: DayStyleShape,
   afterHoveredStartStyles: DayStyleShape,
 
+  overrideStyles: PropTypes.object,
+
   // internationalization
   phrases: PropTypes.shape(getPhrasePropTypes(CalendarDayPhrases))
 }));
@@ -355,7 +357,8 @@ var CustomizableCalendarDay = function (_React$Component) {
             selectedStylesWithHover = _props2.selectedStyles,
             selectedStartStylesWithHover = _props2.selectedStartStyles,
             selectedEndStylesWithHover = _props2.selectedEndStyles,
-            afterHoveredStartStylesWithHover = _props2.afterHoveredStartStyles;
+            afterHoveredStartStylesWithHover = _props2.afterHoveredStartStyles,
+            overrideStyles = _props2.overrideStyles;
         var isHovered = this.state.isHovered;
 
 
@@ -388,7 +391,7 @@ var CustomizableCalendarDay = function (_React$Component) {
 
         return React.createElement(
           'td',
-          _extends({}, css(styles.CalendarDay, useDefaultCursor && styles.CalendarDay__defaultCursor, daySizeStyles, defaultStyles, isOutsideDay && outsideStyles, modifiers.has('today') && todayStyles, modifiers.has('first-day-of-week') && firstDayOfWeekStyles, modifiers.has('last-day-of-week') && lastDayOfWeekStyles, modifiers.has('highlighted-calendar') && highlightedCalendarStyles, modifiers.has('blocked-minimum-nights') && blockedMinNightsStyles, modifiers.has('blocked-calendar') && blockedCalendarStyles, hoveredSpan && hoveredSpanStyles, modifiers.has('after-hovered-start') && afterHoveredStartStyles, modifiers.has('selected-span') && selectedSpanStyles, modifiers.has('last-in-range') && lastInRangeStyles, selected && selectedStyles, modifiers.has('selected-start') && selectedStartStyles, modifiers.has('selected-end') && selectedEndStyles, isOutsideRange && blockedOutOfRangeStyles), {
+          _extends({}, css(styles.CalendarDay, useDefaultCursor && styles.CalendarDay__defaultCursor, daySizeStyles, defaultStyles, isOutsideDay && outsideStyles, modifiers.has('today') && todayStyles, modifiers.has('first-day-of-week') && firstDayOfWeekStyles, modifiers.has('last-day-of-week') && lastDayOfWeekStyles, modifiers.has('highlighted-calendar') && highlightedCalendarStyles, modifiers.has('blocked-minimum-nights') && blockedMinNightsStyles, modifiers.has('blocked-calendar') && blockedCalendarStyles, hoveredSpan && hoveredSpanStyles, modifiers.has('after-hovered-start') && afterHoveredStartStyles, modifiers.has('selected-span') && selectedSpanStyles, modifiers.has('last-in-range') && lastInRangeStyles, selected && selectedStyles, modifiers.has('selected-start') && selectedStartStyles, modifiers.has('selected-end') && selectedEndStyles, isOutsideRange && blockedOutOfRangeStyles, overrideStyles), {
             role: 'button' // eslint-disable-line jsx-a11y/no-noninteractive-element-to-interactive-role
             , ref: this.setButtonRef,
             'aria-label': ariaLabel,
