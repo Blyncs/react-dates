@@ -70,6 +70,8 @@ const propTypes = forbidExtraProps({
   selectedEndStyles: DayStyleShape,
   afterHoveredStartStyles: DayStyleShape,
 
+  overrideStyles: PropTypes.object,
+
   // internationalization
   phrases: PropTypes.shape(getPhrasePropTypes(CalendarDayPhrases)),
 });
@@ -276,6 +278,7 @@ class CustomizableCalendarDay extends React.Component {
       selectedStartStyles: selectedStartStylesWithHover,
       selectedEndStyles: selectedEndStylesWithHover,
       afterHoveredStartStyles: afterHoveredStartStylesWithHover,
+      overrideStyles,
     } = this.props;
 
     const { isHovered } = this.state;
@@ -330,6 +333,7 @@ class CustomizableCalendarDay extends React.Component {
           modifiers.has('selected-start') && selectedStartStyles,
           modifiers.has('selected-end') && selectedEndStyles,
           isOutsideRange && blockedOutOfRangeStyles,
+          overrideStyles,
         )}
         role="button" // eslint-disable-line jsx-a11y/no-noninteractive-element-to-interactive-role
         ref={this.setButtonRef}
